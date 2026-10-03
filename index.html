@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCBOMC · 董冠廷 — 项目主页</title>
+<meta name="description" content="董冠廷的个人项目主页：游戏开发 / 图形学 / AI 应用 / Android / Web 工具">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='8' y='8' width='84' height='84' rx='24' fill='%230067C0'/><text x='50' y='66' font-size='44' text-anchor='middle' fill='white' font-family='Segoe UI'>T</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Mica 质感背景层 -->
+<div class="mica-bg" aria-hidden="true">
+  <div class="mica-bloom bloom-a"></div>
+  <div class="mica-bloom bloom-b"></div>
+  <div class="mica-bloom bloom-c"></div>
+  <div class="mica-noise"></div>
+</div>
+
+<!-- 顶部悬浮"标题栏"胶囊 -->
+<header class="top-bar">
+  <div class="float-pill name-pill">
+    <span class="name-dot"></span>
+    <span class="name-text">董冠廷</span>
+    <span class="name-sub">TCBOMC</span>
+  </div>
+  <div class="top-actions">
+    <a class="float-pill action-pill" href="https://github.com/TCBOMC" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span>GitHub</span>
+    </a>
+    <a class="float-pill action-pill" href="mailto:trseimc@163.com">
+      <span>✉</span><span>Email</span>
+    </a>
+    <a class="float-pill action-pill close-look" href="#about" title="关于我">
+      <span>?</span>
+    </a>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- 左侧浮动侧栏 -->
+  <aside class="float-panel side-nav">
+    <div class="side-head">
+      <div class="side-title">导航</div>
+      <div class="side-sub">个人项目主页</div>
+    </div>
+    <nav class="nav-list" id="nav">
+      <a class="nav-item active" href="#home">首页</a>
+      <a class="nav-item" href="#projects">项目</a>
+      <a class="nav-item" href="#preview">在线预览</a>
+      <a class="nav-item" href="#about">关于</a>
+    </nav>
+    <div class="side-foot">
+      <div class="side-label">风格</div>
+      <div class="side-note">WinUI 浮动容器 · Mica</div>
+    </div>
+  </aside>
+
+  <!-- 内容区 -->
+  <main class="content">
+
+    <!-- 首页 -->
+    <section id="home" class="float-panel hero">
+      <h1>把想法做成能用的东西。</h1>
+      <p class="hero-desc">
+        游戏 / 图形学 / AI 应用 / Android / Web —— 我的项目横跨多个方向，
+        从需求、架构到发布独立完成，并在没有现成方案的地方自己造路。
+      </p>
+      <div class="chip-row">
+        <span class="chip">游戏开发</span>
+        <span class="chip">图形学 · GPU</span>
+        <span class="chip">AI 应用</span>
+        <span class="chip">Android</span>
+        <span class="chip">桌面工具</span>
+        <span class="chip">Web</span>
+      </div>
+      <div class="hero-stat">
+        <div class="stat"><b id="stat-open">–</b><span>开源仓库</span></div>
+        <div class="stat"><b id="stat-all">–</b><span>收录项目</span></div>
+        <div class="stat"><b>10+</b><span>迭代型项目</span></div>
+      </div>
+    </section>
+
+    <!-- 项目 -->
+    <section id="projects">
+      <div class="section-bar">
+        <div class="float-pill filter-pill" id="filters" role="tablist"></div>
+      </div>
+      <div class="card-grid" id="project-grid"></div>
+    </section>
+
+    <!-- 在线预览 -->
+    <section id="preview">
+      <div class="section-head">
+        <h2>在线预览</h2>
+        <p>点击加载实时运行的页面（iframe 嵌入，需要外网访问 GitHub Pages / 自定义域名）。</p>
+      </div>
+      <div class="preview-grid" id="preview-grid"></div>
+    </section>
+
+    <!-- 关于 -->
+    <section id="about" class="float-panel about-panel">
+      <h2>关于我</h2>
+      <p>
+        数字媒体技术专业（游戏设计方向），喜欢往底层钻：从 Android 音频子系统到 GPU 图形管线，
+        多次在没有现成方案的情况下找到可行路径。写过的东西里既有持续迭代几十个版本的日常工具，
+        也有全链路 AI 生成内容的游戏原型。
+      </p>
+      <p>
+        相信工程素养比技术名词更重要：插件化与配置驱动、性能与体积优化、完善的日志与容错、
+        长期维护自己的作品。
+      </p>
+      <div class="link-row">
+        <a class="float-pill action-pill" href="https://github.com/TCBOMC" target="_blank" rel="noopener">github.com/TCBOMC</a>
+        <a class="float-pill action-pill" href="mailto:trseimc@163.com">trseimc@163.com</a>
+        <a class="float-pill action-pill" href="https://3d.trseimc.top/" target="_blank" rel="noopener">3d.trseimc.top</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot">© 2026 董冠廷 · Built with vanilla HTML/CSS/JS · Hosted on GitHub Pages</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

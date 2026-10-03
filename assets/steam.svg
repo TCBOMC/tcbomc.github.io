@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16202d"/><stop offset="1" stop-color="#0b111a"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <g>
+    <rect x="90"  y="210" width="52" height="70" rx="6" fill="#2a4a66"/>
+    <rect x="170" y="160" width="52" height="120" rx="6" fill="#3a648c"/>
+    <rect x="250" y="120" width="52" height="160" rx="6" fill="#4f83b4"/>
+    <rect x="330" y="180" width="52" height="100" rx="6" fill="#33587a"/>
+    <rect x="410" y="90"  width="52" height="190" rx="6" fill="#66c0f4"/>
+    <rect x="490" y="140" width="52" height="140" rx="6" fill="#40688f"/>
+  </g>
+  <polyline points="116,190 196,140 276,100 356,160 436,70 516,120" fill="none" stroke="#ffd54a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="34" y="336" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#dbe7f3">steam-analysis · 3 万款游戏数据画像</text>
+</svg>

@@ -1,10 +1,14 @@
-/* 主逻辑：项目卡片渲染 / 分组筛选 / 预览懒加载 / 滚动导航高亮 */
+/* 主逻辑：项目卡片渲染 / 瀑布流布局 / 分组筛选 / 预览懒加载 / 滚动导航高亮 */
 
 (function () {
   "use strict";
 
   /* ---------- 项目卡片 ---------- */
   const grid = document.getElementById("project-grid");
+  const GAP = 8;        /* PANEL_MARGIN */
+  const COL_MIN = 280;  /* 单列最小宽度 */
+
+  let cards = [];
 
   function badgeHtml(p) {
     if (p.npm) return '<span class="proj-badge badge-npm">npm 包</span>';
@@ -21,8 +25,12 @@
   }
 
   function cardHtml(p, i) {
+    const media = p.img
+      ? '<div class="card-media"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>'
+      : "";
     return (
       '<article class="float-panel proj-card reveal" data-group="' + p.group + '" style="transition-delay:' + (i % 8) * 40 + 'ms">' +
+        media +
         '<div class="proj-top">' +
           '<div class="proj-icon">' + p.icon + "</div>" +
           '<div class="proj-name">' + p.name + "</div>" +
@@ -36,6 +44,56 @@
   }
 
   grid.innerHTML = PROJECTS.map(cardHtml).join("");
+  cards = Array.prototype.slice.call(grid.querySelectorAll(".proj-card"));
+
+  /* ---------- 瀑布流布局 ----------
+     卡片等宽、高度随预览图不同：逐张放入当前最矮的列，
+     让各列最终高度尽量接近。
+     布局时机：初始化 / 窗口尺寸变化 / 图片加载完成 / 字体就绪 / 筛选切换 */
+  let rafId = 0;
+
+  function layout() {
+    const width = grid.clientWidth;
+    if (!width) return;
+    const cols = Math.min(5, Math.max(1, Math.round((width + GAP) / (COL_MIN + GAP))));
+    const colW = (width - GAP * (cols - 1)) / cols;
+    const heights = new Array(cols).fill(0);
+    let maxBottom = 0;
+
+    cards.forEach(function (card) {
+      if (card.classList.contains("hidden")) { card.style.display = "none"; return; }
+      card.style.display = "";
+      card.style.width = colW + "px";
+      const h = card.offsetHeight; /* 先定宽再测高：图片与文本折行都计入 */
+      let c = 0;
+      for (let i = 1; i < cols; i++) if (heights[i] < heights[c]) c = i;
+      const x = Math.round(c * (colW + GAP));
+      const y = Math.round(heights[c]);
+      card.style.left = x + "px";
+      card.style.top = y + "px";
+      heights[c] = y + h + GAP;
+      if (y + h > maxBottom) maxBottom = y + h;
+    });
+
+    grid.style.height = Math.round(maxBottom) + "px";
+  }
+
+  function scheduleLayout() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(function () { rafId = 0; layout(); });
+  }
+
+  /* 图片异步加载完成后重排（预览图高度决定所在列高度） */
+  grid.querySelectorAll(".card-media img").forEach(function (img) {
+    if (img.complete) return;
+    img.addEventListener("load", scheduleLayout);
+    img.addEventListener("error", scheduleLayout);
+  });
+
+  layout();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleLayout);
+  window.addEventListener("load", scheduleLayout);
+  if (window.ResizeObserver) new ResizeObserver(scheduleLayout).observe(grid);
 
   /* ---------- 统计数字 ---------- */
   document.getElementById("stat-all").textContent = PROJECTS.length;
@@ -56,6 +114,7 @@
     grid.querySelectorAll(".proj-card").forEach(function (card) {
       card.classList.toggle("hidden", g !== "all" && card.dataset.group !== g);
     });
+    scheduleLayout(); /* 显隐集合变了，立即重排瀑布流 */
   });
 
   /* ---------- 预览懒加载 ---------- */
@@ -106,7 +165,13 @@
   /* ---------- 入场动画 ---------- */
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add("in"); observer.unobserve(en.target); }
+      if (en.isIntersecting) {
+        en.target.classList.add("in");
+        observer.unobserve(en.target);
+        /* 清掉逐卡延迟，避免拖慢后续的瀑布流位移与 hover 过渡 */
+        const el = en.target;
+        setTimeout(function () { el.style.transitionDelay = ""; }, 700);
+      }
     });
   }, { threshold: 0.08 });
   document.querySelectorAll(".reveal").forEach(function (el) { observer.observe(el); });

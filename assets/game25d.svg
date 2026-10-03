@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d2b45"/><stop offset="1" stop-color="#0d1526"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" fill="url(#bg)"/>
+  <g fill="rgba(255,255,255,.14)">
+    <circle cx="80" cy="60" r="2"/><circle cx="200" cy="40" r="2"/><circle cx="420" cy="70" r="2"/>
+    <circle cx="560" cy="46" r="2"/><circle cx="320" cy="30" r="2"/><circle cx="480" cy="110" r="2"/>
+  </g>
+  <polygon points="470,170 494,182 470,194 446,182" fill="#5a86ad"/>
+  <rect x="446" y="182" width="24" height="20" fill="#41628a"/>
+  <polygon points="320,150 500,240 320,330 140,240" fill="#3f6f9e"/>
+  <polygon points="140,240 320,330 320,362 140,272" fill="#27476b"/>
+  <polygon points="500,240 320,330 320,362 500,272" fill="#1c3350"/>
+  <polygon points="320,96 356,114 320,132 284,114" fill="#e8b64c"/>
+  <rect x="284" y="114" width="36" height="34" fill="#c99a3a"/>
+  <text x="34" y="402" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="25" font-weight="700" fill="#dfe8f5">2.5D 动作闯关游戏 · 纯 C++ 无引擎</text>
+</svg>

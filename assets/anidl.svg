@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f8a8c"/><stop offset="1" stop-color="#0f5e60"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <rect x="70" y="56" width="140" height="188" rx="10" fill="rgba(255,255,255,.20)"/>
+  <rect x="230" y="56" width="140" height="188" rx="10" fill="rgba(255,255,255,.32)"/>
+  <rect x="390" y="56" width="140" height="188" rx="10" fill="rgba(255,255,255,.20)"/>
+  <polygon points="128,128 168,150 128,172" fill="rgba(255,255,255,.65)"/>
+  <polygon points="288,128 328,150 288,172" fill="rgba(255,255,255,.85)"/>
+  <polygon points="448,128 488,150 448,172" fill="rgba(255,255,255,.65)"/>
+  <rect x="70" y="278" width="460" height="4" rx="2" fill="rgba(255,255,255,.35)"/>
+  <circle cx="150" cy="280" r="7" fill="#ffd54a"/>
+  <circle cx="300" cy="280" r="7" fill="#7fe3d0"/>
+  <circle cx="450" cy="280" r="7" fill="#ff9a9a"/>
+  <text x="34" y="336" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="27" font-weight="700" fill="#ffffff">ani-DL · 一站式追番工具</text>
+</svg>

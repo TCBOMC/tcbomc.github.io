@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb2e5"/><stop offset="1" stop-color="#d9ecf7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#sky)"/>
+  <circle cx="520" cy="86" r="34" fill="#fff3c4" opacity=".9"/>
+  <path d="M0 250 L110 160 L210 240 L330 130 L450 235 L545 175 L640 230 L640 400 L0 400 Z" fill="#5a8f68" opacity=".85"/>
+  <path d="M330 130 L372 170 L350 174 L330 158 L310 174 L290 168 Z" fill="#f2f7fb"/>
+  <path d="M0 300 L140 220 L260 292 L400 210 L520 285 L640 240 L640 400 L0 400 Z" fill="#3f704f"/>
+  <path d="M0 340 L180 290 L340 336 L500 292 L640 330 L640 400 L0 400 Z" fill="#2c5540"/>
+  <text x="30" y="378" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#ffffff">地形与生物群系生成系统</text>
+</svg>

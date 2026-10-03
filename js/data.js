@@ -1,9 +1,11 @@
-/* 项目数据：status = open(开源) / closed(未开源)；npm 标记 npm 包 */
+/* 项目数据：status = open(开源) / closed(未开源)；npm 标记 npm 包；
+   img 为可选预览图（assets/ 下，有图卡片更高，参与瀑布流测高） */
 const PROJECTS = [
   /* ---- 游戏与图形 ---- */
   {
     name: "2.5D 动作闯关游戏",
     icon: "🎮",
+    img: "assets/game25d.svg",
     group: "游戏",
     status: "closed",
     desc: "纯 2D 素材美术制作的 2.5D 游戏——人物移动、物理碰撞与场景搭建均为完整 3D 实现，仅视角固定朝向。纯 C++（SFML）无引擎实现，自研深度轴、角色动画、碰撞与关卡系统。",
@@ -12,6 +14,7 @@ const PROJECTS = [
   {
     name: "地形与生物群系生成系统",
     icon: "🏔️",
+    img: "assets/pcg.svg",
     group: "游戏",
     status: "closed",
     desc: "「像真实地球一样运转」的世界生成器：太阳辐射→温度→气压→风场→降水→湿度的物理驱动模拟链，生态适宜度驱动的生物群系自然涌现，核心分析在 GPU 上完成。",
@@ -20,6 +23,7 @@ const PROJECTS = [
   {
     name: "AIgame",
     icon: "✨",
+    img: "assets/aigame.svg",
     group: "游戏",
     status: "closed",
     desc: "AI 驱动的多模态视觉小说游戏——剧情、分支、背景插画、角色配音全部由 AI 实时生成，无任何预制作素材，剧情可无限延展。",
@@ -80,6 +84,7 @@ const PROJECTS = [
   {
     name: "AppVolume",
     icon: "🔊",
+    img: "assets/appvolume.svg",
     group: "android",
     status: "closed",
     desc: "Android 每应用独立音量与声道平衡工具：突破系统不开放的能力，全程免 Root；音量曲线按专业调音台 dB 推子设计，安装包仅约 2MB，持续迭代 13+ 版本。",
@@ -90,6 +95,7 @@ const PROJECTS = [
   {
     name: "ToolsLoader",
     icon: "🧰",
+    img: "assets/toolsloader.svg",
     group: "tool",
     status: "closed",
     desc: "Python 插件化工具箱平台：插件上下文隔离、耗时任务子进程执行可强杀、依赖自动安装、文件级热加载、崩溃日志落盘，迭代 40+ 版本的日常工作台。",
@@ -98,6 +104,7 @@ const PROJECTS = [
   {
     name: "ani-DL",
     icon: "📺",
+    img: "assets/anidl.svg",
     group: "tool",
     status: "closed",
     desc: "一站式追番桌面工具：新番时间线海报墙、多维筛选、通配符订阅规则引擎、WebSocket 实时搜索推送；独立加载页子进程实现秒开无白屏。",
@@ -126,6 +133,7 @@ const PROJECTS = [
   {
     name: "steam-analysis",
     icon: "📊",
+    img: "assets/steam.svg",
     group: "web",
     status: "open",
     desc: "对 2006–2025 年 3 万余款 Steam 游戏清洗分析：年度画像、类型分布、价格规律、题材词云与跨年趋势可视化。",

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="320" viewBox="0 0 640 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f6cbd"/><stop offset="1" stop-color="#004e8c"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="320" fill="url(#bg)"/>
+  <rect x="120" y="48" width="400" height="180" rx="16" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.35)"/>
+  <rect x="200" y="72" width="8" height="132" rx="4" fill="rgba(255,255,255,.35)"/>
+  <rect x="200" y="120" width="8" height="84" rx="4" fill="#ffd54a"/>
+  <circle cx="204" cy="120" r="15" fill="#ffffff"/>
+  <rect x="320" y="72" width="8" height="132" rx="4" fill="rgba(255,255,255,.35)"/>
+  <rect x="320" y="90" width="8" height="114" rx="4" fill="#7fe3a0"/>
+  <circle cx="324" cy="90" r="15" fill="#ffffff"/>
+  <rect x="440" y="72" width="8" height="132" rx="4" fill="rgba(255,255,255,.35)"/>
+  <rect x="440" y="150" width="8" height="54" rx="4" fill="#ff9a76"/>
+  <circle cx="444" cy="150" r="15" fill="#ffffff"/>
+  <text x="34" y="284" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="26" font-weight="700" fill="#eaf4ff">AppVolume · 每应用独立音量</text>
+</svg>

@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parent
 PROJECTS_DIR = ROOT / "projects"
 OUT = ROOT / "js" / "projects.gen.js"
 
+HOME_FOLDER = "home"  # 特殊文件夹：不生成卡片，作为首页卡片配置（含轮播图）
+
 
 def resolve_img(folder: str, img: str):
     """按规则解析头图路径，返回站点相对路径；文件不存在返回 None。"""
@@ -29,12 +31,43 @@ def resolve_img(folder: str, img: str):
     return rel if target.is_file() else None
 
 
+def load_hero():
+    """读取 projects/home/config.json，生成首页卡片数据（HERO）。"""
+    cfg_path = PROJECTS_DIR / HOME_FOLDER / "config.json"
+    if not cfg_path.is_file():
+        print("[提示] 无 projects/home/config.json，首页卡片保持内置静态内容")
+        return None
+    cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+    hero = {
+        "title": cfg.get("title", ""),
+        "desc": cfg.get("desc", ""),
+        "chips": cfg.get("chips", []),
+        "stats": cfg.get("stats", []),
+    }
+    carousel = []
+    for s in cfg.get("carousel", []):
+        img = resolve_img(HOME_FOLDER, s.get("img", ""))
+        if not img:
+            print(f"[警告] 首页轮播图 {s.get('img')} 不存在，已跳过")
+            continue
+        slide = {"img": img}
+        if s.get("caption"):
+            slide["caption"] = s["caption"]
+        carousel.append(slide)
+    if carousel:
+        hero["carousel"] = carousel
+    print(f"[OK] 首页配置已加载（轮播 {len(carousel)} 张）")
+    return hero
+
+
 def main() -> None:
     if not PROJECTS_DIR.is_dir():
         sys.exit("[错误] 缺少 projects/ 目录")
     items = []
     for cfg_path in sorted(PROJECTS_DIR.glob("*/config.json")):
         folder = cfg_path.parent.name
+        if folder == HOME_FOLDER:
+            continue  # 首页配置不生成项目卡片
         try:
             cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
@@ -68,10 +101,13 @@ def main() -> None:
     for it in items:
         it.pop("order", None)
 
+    hero = load_hero()
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    hero_payload = json.dumps(hero, ensure_ascii=False, indent=2)
     payload = json.dumps(items, ensure_ascii=False, indent=2)
     OUT.write_text(
         "/* 自动生成：build.py 扫描 projects 目录下各 config.json 生成，请勿手改 */\n"
+        "const HERO = " + hero_payload + ";\n"
         "const PROJECTS = " + payload + ";\n",
         encoding="utf-8",
     )

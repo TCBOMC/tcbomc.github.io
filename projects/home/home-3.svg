@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f4c81"/><stop offset="1" stop-color="#2f9ec7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="360" fill="url(#g3)"/>
+  <rect x="330" y="40" width="140" height="280" rx="22" fill="#eaf6ff" opacity=".92"/>
+  <rect x="344" y="70" width="112" height="8" rx="4" fill="#9fcbe8"/>
+  <rect x="344" y="90" width="112" height="60" rx="8" fill="#0067C0" opacity=".85"/>
+  <rect x="344" y="160" width="112" height="60" rx="8" fill="#69b4dc" opacity=".85"/>
+  <rect x="344" y="230" width="112" height="60" rx="8" fill="#b3dcf0" opacity=".9"/>
+  <text x="36" y="332" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#ffffff">AppVolume · 免 Root 每应用音量控制</text>
+</svg>

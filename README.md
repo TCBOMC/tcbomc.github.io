@@ -38,12 +38,39 @@ WinUI「浮动容器 / Mica」风格的个人项目主页，纯原生 HTML/CSS/J
 - **开源状态**：有 `repo` 字段自动标记"开源"，否则"未开源"
 - **分类**：`group` 直接作为筛选选项文案，新分类自动出现在筛选栏
 
+## 首页卡片（projects/home/config.json）
+
+`projects/home/` 是特殊文件夹：**不生成项目卡片**，而是配置首页卡片（标题、简介、标签、统计数字）与轮播图：
+
+```json
+{
+  "title": "把想法做成能用的东西。",
+  "desc": "首页简介文案",
+  "chips": ["标签1", "标签2"],
+  "stats": [
+    { "auto": "open", "label": "开源仓库" },
+    { "auto": "all", "label": "收录项目" },
+    { "value": "10+", "label": "迭代型项目" }
+  ],
+  "carousel": [
+    { "img": "home-1.svg", "caption": "轮播图说明（可选）" },
+    { "img": "assets/xxx.png" }
+  ]
+}
+```
+
+- **轮播图路径**：与项目头图规则一致——`assets/xxx.png`（含斜杠）走站点 `assets/`，纯文件名从 `projects/home/` 加载
+- **轮播行为**：4.5 秒自动播放、悬停暂停、左右按钮 + 圆点切换、触屏可滑动
+- **stats**：`auto` 填 `"open"` / `"all"` 自动统计项目数，或直接写固定 `value`
+- 缺少该文件时首页回退到 index.html 内置的静态内容
+
 ## 文件结构
 
 ```
 ├── index.html                  页面骨架
-├── build.py                    扫描 projects/ 生成 js/projects.gen.js
+├── build.py                    扫描 projects/ 生成 js/projects.gen.js（含首页 HERO）
 ├── projects/<文件夹>/           每个项目一个文件夹（config.json + 可选图片）
+├── projects/home/              首页卡片配置（标题/简介/统计/轮播图）
 ├── assets/                     共享静态资源（图片也可放这里）
 ├── css/style.css               全部样式（设计参数集中在 :root）
 ├── js/

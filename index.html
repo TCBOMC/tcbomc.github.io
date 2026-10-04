@@ -62,7 +62,9 @@
   <!-- 内容区 -->
   <main class="content">
 
-    <!-- 首页（section 只做整页占位，面板自然高度、下方留白） -->
+    <!-- 首页（section 只做整页占位，面板自然高度、下方留白）
+         面板内容由 build.py 从 projects/home/config.json 生成（含轮播图），
+         下方静态内容仅作为未运行构建时的兜底，构建后会被 HERO 数据渲染覆盖 -->
     <section id="home" class="page">
       <div class="float-panel hero">
       <h1>把想法做成能用的东西。</h1>
@@ -79,8 +81,8 @@
         <span class="chip">Web</span>
       </div>
       <div class="hero-stat">
-        <div class="stat"><b id="stat-open">–</b><span>开源仓库</span></div>
-        <div class="stat"><b id="stat-all">–</b><span>收录项目</span></div>
+        <div class="stat"><b data-stat="open">–</b><span>开源仓库</span></div>
+        <div class="stat"><b data-stat="all">–</b><span>收录项目</span></div>
         <div class="stat"><b>10+</b><span>迭代型项目</span></div>
       </div>
       </div>

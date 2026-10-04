@@ -1,4 +1,44 @@
 /* 自动生成：build.py 扫描 projects 目录下各 config.json 生成，请勿手改 */
+const HERO = {
+  "title": "把想法做成能用的东西。",
+  "desc": "游戏 / 图形学 / AI 应用 / Android / Web —— 我的项目横跨多个方向，从需求、架构到发布独立完成，并在没有现成方案的地方自己造路。",
+  "chips": [
+    "游戏开发",
+    "图形学 · GPU",
+    "AI 应用",
+    "Android",
+    "桌面工具",
+    "Web"
+  ],
+  "stats": [
+    {
+      "auto": "open",
+      "label": "开源仓库"
+    },
+    {
+      "auto": "all",
+      "label": "收录项目"
+    },
+    {
+      "value": "10+",
+      "label": "迭代型项目"
+    }
+  ],
+  "carousel": [
+    {
+      "img": "projects/home/home-1.svg",
+      "caption": "地形与生物群系生成系统 · 物理驱动 PCG"
+    },
+    {
+      "img": "projects/home/home-2.svg",
+      "caption": "AIgame · 全链路 AI 生成视觉小说"
+    },
+    {
+      "img": "projects/home/home-3.svg",
+      "caption": "AppVolume · 免 Root 每应用音量控制"
+    }
+  ]
+};
 const PROJECTS = [
   {
     "name": "2.5D 动作闯关游戏",

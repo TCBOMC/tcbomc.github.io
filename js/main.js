@@ -1,7 +1,93 @@
-/* 主逻辑：项目卡片渲染 / 瀑布流布局 / 分组筛选 / 预览懒加载 / 滚动导航高亮 */
+/* 主逻辑：首页卡片渲染与轮播图 / 项目卡片渲染 / 瀑布流布局 / 分组筛选 / 预览懒加载 / 滚动导航高亮 */
 
 (function () {
   "use strict";
+
+  /* ---------- 首页卡片（由 projects/home/config.json 经 build.py 生成 HERO） ---------- */
+  const heroPanel = document.querySelector("#home .hero");
+
+  function carouselHtml(slides) {
+    const inner = slides.map(function (s, i) {
+      return (
+        '<figure class="car-slide">' +
+          '<img src="' + s.img + '" alt="' + (s.caption || "轮播图") + '"' + (i === 0 ? "" : ' loading="lazy"') + '>' +
+          (s.caption ? "<figcaption>" + s.caption + "</figcaption>" : "") +
+        "</figure>"
+      );
+    }).join("");
+    const dots = slides.map(function (_, i) {
+      return '<button type="button" class="car-dot" data-i="' + i + '" aria-label="切换到第' + (i + 1) + '张"></button>';
+    }).join("");
+    return (
+      '<div class="carousel" id="hero-carousel">' +
+        '<div class="car-track">' + inner + "</div>" +
+        '<button type="button" class="car-btn car-prev" aria-label="上一张">‹</button>' +
+        '<button type="button" class="car-btn car-next" aria-label="下一张">›</button>' +
+        '<div class="car-dots">' + dots + "</div>" +
+      "</div>"
+    );
+  }
+
+  function heroHtml(h) {
+    const chips = (h.chips || []).map(function (c) { return '<span class="chip">' + c + "</span>"; }).join("");
+    const stats = (h.stats || []).map(function (s) {
+      const attr = s.auto ? ' data-stat="' + s.auto + '"' : "";
+      const val = s.auto ? "–" : (s.value != null ? s.value : "");
+      return '<div class="stat"><b' + attr + ">" + val + "</b><span>" + s.label + "</span></div>";
+    }).join("");
+    const carousel = h.carousel && h.carousel.length ? carouselHtml(h.carousel) : "";
+    return (
+      carousel +
+      "<h1>" + h.title + "</h1>" +
+      '<p class="hero-desc">' + h.desc + "</p>" +
+      '<div class="chip-row">' + chips + "</div>" +
+      '<div class="hero-stat">' + stats + "</div>"
+    );
+  }
+
+  function initCarousel(root) {
+    const track = root.querySelector(".car-track");
+    const dots = Array.prototype.slice.call(root.querySelectorAll(".car-dot"));
+    const n = track.children.length;
+    if (n < 2) {
+      const btns = root.querySelectorAll(".car-btn"), dd = root.querySelector(".car-dots");
+      btns.forEach(function (b) { b.remove(); });
+      if (dd) dd.remove();
+      return;
+    }
+    let cur = 0, timer = 0;
+    function go(i) {
+      cur = (i + n) % n;
+      track.style.transform = "translateX(" + (-cur * 100) + "%)";
+      dots.forEach(function (d, k) { d.classList.toggle("active", k === cur); });
+    }
+    function play() { stop(); timer = setInterval(function () { go(cur + 1); }, 4500); }
+    function stop() { if (timer) { clearInterval(timer); timer = 0; } }
+    root.querySelector(".car-next").addEventListener("click", function () { go(cur + 1); play(); });
+    root.querySelector(".car-prev").addEventListener("click", function () { go(cur - 1); play(); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () { go(+d.dataset.i); play(); });
+    });
+    root.addEventListener("mouseenter", stop);   /* 悬停暂停自动播放 */
+    root.addEventListener("mouseleave", play);
+    let startX = null;                            /* 触屏滑动切换 */
+    root.addEventListener("pointerdown", function (e) { startX = e.clientX; stop(); });
+    root.addEventListener("pointerup", function (e) {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 40) go(dx < 0 ? cur + 1 : cur - 1);
+      play();
+    });
+    dots[0].classList.add("active");
+    play();
+  }
+
+  if (typeof HERO !== "undefined" && HERO && heroPanel) {
+    heroPanel.innerHTML = heroHtml(HERO);
+    const car = document.getElementById("hero-carousel");
+    if (car) initCarousel(car);
+  }
 
   /* ---------- 项目卡片 ---------- */
   const grid = document.getElementById("project-grid");
@@ -95,9 +181,11 @@
   window.addEventListener("load", scheduleLayout);
   if (window.ResizeObserver) new ResizeObserver(scheduleLayout).observe(grid);
 
-  /* ---------- 统计数字 ---------- */
-  document.getElementById("stat-all").textContent = PROJECTS.length;
-  document.getElementById("stat-open").textContent = PROJECTS.filter(function (p) { return p.status === "open"; }).length;
+  /* ---------- 统计数字（首页卡片渲染前后通用：静态兜底与 HERO 渲染都走 data-stat） ---------- */
+  document.querySelectorAll("[data-stat]").forEach(function (el) {
+    if (el.dataset.stat === "open") el.textContent = PROJECTS.filter(function (p) { return p.status === "open"; }).length;
+    if (el.dataset.stat === "all") el.textContent = PROJECTS.length;
+  });
 
   /* ---------- 分组筛选（分类由各项目 config.json 动态推导，按首次出现顺序） ---------- */
   const GROUPS = [{ id: "all", label: "全部" }].concat(

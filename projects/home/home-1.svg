@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6ea8dc"/><stop offset="1" stop-color="#d5e9f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="360" fill="url(#g1)"/>
+  <circle cx="660" cy="70" r="30" fill="#fff3c4" opacity=".9"/>
+  <path d="M0 220 L130 130 L250 210 L390 100 L520 205 L640 150 L800 200 L800 360 L0 360 Z" fill="#5a8f68" opacity=".85"/>
+  <path d="M390 100 L432 140 L410 144 L390 128 L370 144 L350 138 Z" fill="#f2f7fb"/>
+  <path d="M0 280 L160 200 L300 270 L460 190 L600 262 L800 225 L800 360 L0 360 Z" fill="#3f704f"/>
+  <path d="M0 325 L200 285 L380 322 L560 285 L800 318 L800 360 L0 360 Z" fill="#2c5540"/>
+  <text x="36" y="332" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#ffffff">地形与生物群系生成系统 · PCG</text>
+</svg>

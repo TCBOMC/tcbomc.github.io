@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b2f63"/><stop offset="1" stop-color="#7a5fa8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="360" fill="url(#g2)"/>
+  <circle cx="150" cy="90" r="46" fill="#f2c94c" opacity=".85"/>
+  <circle cx="620" cy="240" r="70" fill="#9b7fd4" opacity=".55"/>
+  <circle cx="700" cy="110" r="26" fill="#e8d9ff" opacity=".7"/>
+  <path d="M240 250 L280 190 L320 250 Z" fill="#f2c94c" opacity=".9"/>
+  <rect x="470" y="150" width="52" height="100" rx="10" fill="#efeaff" opacity=".9"/>
+  <text x="36" y="332" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="28" font-weight="700" fill="#ffffff">AIgame · 全链路 AI 生成视觉小说</text>
+</svg>

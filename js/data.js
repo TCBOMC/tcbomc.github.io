@@ -9,7 +9,7 @@ const PREVIEWS = [
   },
   {
     name: "steam-analysis",
-    url: "https://tcbomc.github.io/steam-analysis/",
+    url: "https://www.trseimc.top/steam-analysis/",
     repo: "https://github.com/TCBOMC/steam-analysis",
     note: "3 万款 Steam 游戏数据可视化报告"
   }

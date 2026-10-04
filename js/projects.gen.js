@@ -226,8 +226,8 @@ const PROJECTS = [
     "status": "open",
     "img": "projects/steam-analysis/steam.svg",
     "repo": "https://github.com/TCBOMC/steam-analysis",
-    "demo": "https://tcbomc.github.io/steam-analysis/",
-    "preview": "https://tcbomc.github.io/steam-analysis/"
+    "demo": "https://www.trseimc.top/steam-analysis/",
+    "preview": "https://www.trseimc.top/steam-analysis/"
   },
   {
     "name": "clash-dashboard",

@@ -212,7 +212,7 @@
     scheduleLayout(); /* 显隐集合变了，立即重排瀑布流 */
   });
 
-  /* ---------- 预览懒加载 ---------- */
+  /* ---------- 预览区（iframe 直接嵌入，无需手动点击加载） ---------- */
   const previewGrid = document.getElementById("preview-grid");
   previewGrid.innerHTML = PREVIEWS.map(function (pv) {
     return (
@@ -221,26 +221,12 @@
           '<a class="plink" target="_blank" rel="noopener" href="' + pv.url + '">↗ 新窗口打开</a>' +
           '<a class="plink" target="_blank" rel="noopener" href="' + pv.repo + '">⌥ 源码</a>' +
         "</div>" +
-        '<div class="preview-frame" data-url="' + pv.url + '">' +
-          '<div class="preview-load"><span>' + pv.note + "</span><button type=\"button\">加载预览</button></div>" +
+        '<div class="preview-frame">' +
+          '<iframe src="' + pv.url + '" loading="lazy" allow="fullscreen; xr-spatial-tracking" title="' + pv.name + '"></iframe>' +
         "</div>" +
       "</div>"
     );
   }).join("");
-
-  previewGrid.addEventListener("click", function (e) {
-    const btn = e.target.closest("button");
-    if (!btn) return;
-    const frame = btn.closest(".preview-frame");
-    if (!frame || frame.querySelector("iframe")) return;
-    const iframe = document.createElement("iframe");
-    iframe.src = frame.dataset.url;
-    iframe.loading = "lazy";
-    iframe.allow = "fullscreen; xr-spatial-tracking";
-    iframe.title = frame.closest(".preview-card").querySelector("b").textContent;
-    frame.appendChild(iframe);
-    btn.closest(".preview-load").remove();
-  });
 
   /* ---------- 滚动导航高亮 ---------- */
   const navItems = document.querySelectorAll(".nav-item");

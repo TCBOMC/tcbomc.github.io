@@ -99,7 +99,14 @@
   document.getElementById("stat-all").textContent = PROJECTS.length;
   document.getElementById("stat-open").textContent = PROJECTS.filter(function (p) { return p.status === "open"; }).length;
 
-  /* ---------- 分组筛选 ---------- */
+  /* ---------- 分组筛选（分类由各项目 config.json 动态推导，按首次出现顺序） ---------- */
+  const GROUPS = [{ id: "all", label: "全部" }].concat(
+    PROJECTS.reduce(function (acc, p) {
+      if (acc.indexOf(p.group) === -1) acc.push(p.group);
+      return acc;
+    }, []).map(function (g) { return { id: g, label: g }; })
+  );
+
   const filterBox = document.getElementById("filters");
   filterBox.innerHTML = GROUPS.map(function (g, i) {
     return '<button class="filter-btn' + (i === 0 ? " active" : "") + '" data-group="' + g.id + '" role="tab">' + g.label + "</button>";

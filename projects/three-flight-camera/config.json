@@ -1,0 +1,11 @@
+{
+  "name": "three-flight-camera",
+  "icon": "🛩️",
+  "group": "游戏 · 图形",
+  "order": 60,
+  "npm": true,
+  "desc": "Three.js 的 6-DOF 飞行摄像机控制器（npm 开源包）：Body/Camera 双层架构 + 旋转烘焙，解决滚转漂移、万向锁与移动方向错位三大经典问题。",
+  "tags": ["TypeScript", "npm", "四元数"],
+  "repo": "https://github.com/TCBOMC/three-flight-camera",
+  "demo": "https://www.npmjs.com/package/three-flight-camera"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "clash-dashboard",
+  "icon": "🌐",
+  "group": "Web",
+  "order": 150,
+  "desc": "带 Clash 订阅管理功能的现代化 WebUI，Docker + Nginx 自托管于家庭 NAS。",
+  "tags": ["HTML/JS", "自托管"],
+  "repo": "https://github.com/TCBOMC/clash-dashboard"
+}

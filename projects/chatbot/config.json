@@ -1,0 +1,9 @@
+{
+  "name": "多模态 ChatBot 系统",
+  "icon": "💬",
+  "group": "AI 应用",
+  "order": 80,
+  "desc": "多 AI 模型协作的对话引擎：文档/图片按需检索注入对话、多情景预设、可自定义深度思考链，现代化 WebUI 多用户访问。",
+  "tags": ["Python", "RAG", "WebUI"],
+  "repo": "https://github.com/TCBOMC/chat-bot"
+}

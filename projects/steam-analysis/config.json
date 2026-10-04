@@ -1,0 +1,12 @@
+{
+  "name": "steam-analysis",
+  "icon": "📊",
+  "group": "Web",
+  "order": 140,
+  "desc": "对 2006–2025 年 3 万余款 Steam 游戏清洗分析：年度画像、类型分布、价格规律、题材词云与跨年趋势可视化。",
+  "tags": ["数据可视化", "前端"],
+  "repo": "https://github.com/TCBOMC/steam-analysis",
+  "demo": "https://tcbomc.github.io/steam-analysis/",
+  "preview": "https://tcbomc.github.io/steam-analysis/",
+  "img": "steam.svg"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Audio-book TTS Tool",
+  "icon": "📖",
+  "group": "AI 应用",
+  "order": 70,
+  "desc": "小说一键转多角色有声书：自动分章、AI 标注角色、批量语音合成；支持百万字级文本，兼容多家大模型与 OpenAI 兼容 API。",
+  "tags": ["Python", "TTS", "LLM"],
+  "repo": "https://github.com/TCBOMC/audio-book-TTS-tool"
+}

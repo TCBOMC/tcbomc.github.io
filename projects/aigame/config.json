@@ -1,0 +1,9 @@
+{
+  "name": "AIgame",
+  "icon": "✨",
+  "group": "游戏 · 图形",
+  "order": 30,
+  "desc": "AI 驱动的多模态视觉小说游戏——剧情、分支、背景插画、角色配音全部由 AI 实时生成，无任何预制作素材，剧情可无限延展。",
+  "tags": ["Unity", "LLM", "Stable Diffusion", "GPT-SoVITS"],
+  "img": "aigame.svg"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "AppVolume",
+  "icon": "🔊",
+  "group": "Android",
+  "order": 90,
+  "desc": "Android 每应用独立音量与声道平衡工具：突破系统不开放的能力，全程免 Root；音量曲线按专业调音台 dB 推子设计，安装包仅约 2MB，持续迭代 13+ 版本。",
+  "tags": ["Kotlin", "Compose", "AudioFlinger", "Shizuku"],
+  "img": "appvolume.svg"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "ani-DL",
+  "icon": "📺",
+  "group": "桌面 · 工具",
+  "order": 110,
+  "desc": "一站式追番桌面工具：新番时间线海报墙、多维筛选、通配符订阅规则引擎、WebSocket 实时搜索推送；独立加载页子进程实现秒开无白屏。",
+  "tags": ["Python", "PyQt5", "FastAPI", "爬虫"],
+  "img": "anidl.svg"
+}

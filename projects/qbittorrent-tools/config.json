@@ -1,0 +1,9 @@
+{
+  "name": "qBittorrent 系列增强",
+  "icon": "🌀",
+  "group": "桌面 · 工具",
+  "order": 130,
+  "desc": "为 qBittorrent 打造的三件套：运行时多语言切换 WebUI、移动端自适应 WebUI、RSS 订阅自动下载器。",
+  "tags": ["Python", "WebUI", "二开"],
+  "repo": "https://github.com/TCBOMC/qbittorrent-webui-i18n"
+}

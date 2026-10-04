@@ -1,0 +1,9 @@
+{
+  "name": "ToolsLoader",
+  "icon": "🧰",
+  "group": "桌面 · 工具",
+  "order": 100,
+  "desc": "Python 插件化工具箱平台：插件上下文隔离、耗时任务子进程执行可强杀、依赖自动安装、文件级热加载、崩溃日志落盘，迭代 40+ 版本的日常工作台。",
+  "tags": ["Python", "PyQt5", "插件系统"],
+  "img": "toolsloader.svg"
+}

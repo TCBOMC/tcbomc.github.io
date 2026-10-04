@@ -1,0 +1,11 @@
+{
+  "name": "3D-Model-Viewer",
+  "icon": "🧊",
+  "group": "游戏 · 图形",
+  "order": 50,
+  "desc": "网页端 3D 模型浏览器，支持 Mesh 与点云。飞行模式视角控制为自研混合方案：静止观察用钳制欧拉角，移动瞬间以四元数烘焙为世界朝向——无万向锁、无滚转漂移。",
+  "tags": ["Three.js", "6-DOF 相机", "点云"],
+  "repo": "https://github.com/TCBOMC/3D-Model-Viewer",
+  "demo": "https://3d.trseimc.top/",
+  "preview": "https://3d.trseimc.top/"
+}

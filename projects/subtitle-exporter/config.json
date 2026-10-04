@@ -1,0 +1,9 @@
+{
+  "name": "Subtitle-Exporter",
+  "icon": "📝",
+  "group": "桌面 · 工具",
+  "order": 120,
+  "desc": "批量导出字幕的效率工具。",
+  "tags": ["Python"],
+  "repo": "https://github.com/TCBOMC/Subtitle-Exporter"
+}

@@ -335,6 +335,7 @@ section {
   /* 侧栏 → 窗口底部 Dock 栏：固定悬浮、横向均分，脱离文档流 */
   .side-nav {
     position: fixed;
+    top: auto; /* 覆盖基础样式的 sticky top:66px，否则与 bottom 同时生效会把 Dock 拉满整屏 */
     left: var(--gap); right: var(--gap);
     bottom: calc(var(--gap) + env(safe-area-inset-bottom, 0px));
     z-index: 60;

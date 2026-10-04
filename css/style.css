@@ -316,7 +316,7 @@ section {
 
 .preview-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: 1fr; /* 始终一行一个预览窗口 */
   gap: var(--gap);
 }
 .preview-card { overflow: hidden; display: flex; flex-direction: column; }
@@ -400,7 +400,6 @@ section {
     border-radius: var(--radius-ctrl);
   }
   .hero-stat { gap: 22px; }
-  .preview-grid { grid-template-columns: 1fr; }
   /* 小屏只收起文字标签（.pill-text），保留图标；"？"按钮无图标不隐藏，避免变成空胶囊 */
   .top-actions .action-pill .pill-text { display: none; }
 }

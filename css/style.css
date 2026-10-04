@@ -353,5 +353,6 @@ section {
   }
   .hero-stat { gap: 22px; }
   .preview-grid { grid-template-columns: 1fr; }
-  .top-actions .action-pill span:last-child { display: none; }
+  /* 小屏只收起文字标签（.pill-text），保留图标；"？"按钮无图标不隐藏，避免变成空胶囊 */
+  .top-actions .action-pill .pill-text { display: none; }
 }

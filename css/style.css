@@ -30,6 +30,8 @@
   --shadow-pill: 0 6px 18px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
 
   --font: "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+
+  --dock-h: 56px;            /* 移动端底部 Dock 栏估算高度（用于内容避让） */
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -320,14 +322,34 @@ section {
 
 /* ============ 响应式 ============ */
 @media (max-width: 900px) {
-  body { padding-top: 70px; }
-  /* 小屏顶边距 70px，吸附与页高同步调整 */
+  body {
+    padding-top: 70px;
+    /* 底部为 Dock 栏预留空间：dock 高度 + 上下间距 + iOS 安全区 */
+    padding-bottom: calc(var(--dock-h) + var(--gap) * 2 + env(safe-area-inset-bottom, 0px));
+  }
+  /* 小屏顶边距 70px，吸附与页高同步调整；页高扣除 Dock 占位，整页内容不会被 Dock 遮住 */
   html { scroll-padding-top: 70px; }
-  section { min-height: calc(100vh - 70px - 32px - 8px); }
+  section { min-height: calc(100vh - 70px - 32px - 8px - var(--dock-h)); }
   .layout { grid-template-columns: 1fr; }
-  .side-nav { position: static; min-height: 0; flex-direction: row; align-items: center; flex-wrap: wrap; }
+
+  /* 侧栏 → 窗口底部 Dock 栏：固定悬浮、横向均分，脱离文档流 */
+  .side-nav {
+    position: fixed;
+    left: var(--gap); right: var(--gap);
+    bottom: calc(var(--gap) + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    flex-direction: row; align-items: center;
+    min-height: 0;
+    padding: 8px 10px;
+    box-shadow: var(--shadow-pill);
+  }
   .side-head, .side-foot { display: none; }
-  .nav-list { flex-direction: row; flex-wrap: wrap; }
+  .nav-list { flex-direction: row; flex: 1; gap: 4px; }
+  .nav-item {
+    flex: 1; text-align: center;
+    padding: 9px 6px;
+    border-radius: var(--radius-ctrl);
+  }
   .hero-stat { gap: 22px; }
   .preview-grid { grid-template-columns: 1fr; }
   .top-actions .action-pill span:last-child { display: none; }

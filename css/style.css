@@ -34,7 +34,12 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* 整页翻动：吸附点为各 section 顶部；滚到一页底部后继续滚动会平滑滑入下一页 */
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 76px; /* 吸附位置 = body 顶边距，与顶栏下缘对齐 */
+}
 
 body {
   font-family: var(--font);
@@ -155,7 +160,22 @@ body {
 /* ============ 内容区 ============ */
 .content { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
 
-section { scroll-margin-top: 70px; }
+/* 整页翻动布局：
+   每页占满「顶边距(76px) → 底边距(32px)」的视口范围，不足的空间以空白填充；
+   内容超出视口的页面（如项目页）先在页内滚动，滚到底后继续滚动平滑进入下一页 */
+section {
+  scroll-margin-top: 0; /* 吸附偏移由 html 的 scroll-padding-top 统一控制 */
+  scroll-snap-align: start;
+  min-height: calc(100vh - 76px - 32px - 8px); /* 视口高 - 顶边距 - 底边距 - 面板间距 */
+}
+/* 面板型页面：拉伸面板本体填满，空白留在面板内部 */
+#home.hero, #about {
+  display: flex; flex-direction: column;
+}
+/* 末页无后续间距，直接贴到底边距为止 */
+#about {
+  min-height: calc(100vh - 76px - 32px);
+}
 
 /* Hero */
 .hero { padding: 34px 36px 30px; }
@@ -308,6 +328,10 @@ section { scroll-margin-top: 70px; }
 /* ============ 响应式 ============ */
 @media (max-width: 900px) {
   body { padding-top: 70px; }
+  /* 小屏顶边距 70px，吸附与页高同步调整 */
+  html { scroll-padding-top: 70px; }
+  section { min-height: calc(100vh - 70px - 32px - 8px); }
+  #about { min-height: calc(100vh - 70px - 32px); }
   .layout { grid-template-columns: 1fr; }
   .side-nav { position: static; min-height: 0; flex-direction: row; align-items: center; flex-wrap: wrap; }
   .side-head, .side-foot { display: none; }
